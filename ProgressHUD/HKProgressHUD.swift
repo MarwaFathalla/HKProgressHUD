@@ -370,8 +370,8 @@ public class HKProgressHUD: UIView {
         
         for view: UIView in [label!, detailsLabel!, button!] {
             view.translatesAutoresizingMaskIntoConstraints = false
-            view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998.0), for: .horizontal)
-            view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998.0), for: .vertical)
+//            view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998.0), for: .horizontal)
+//            view.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998.0), for: .vertical)
             bezelView?.addSubview(view)
         }
         
@@ -432,9 +432,9 @@ public class HKProgressHUD: UIView {
             progressView.setValue(progress, forKey: "progress")
         }
         
-        indicator?.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998), for: .horizontal)
-        indicator?.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998), for: .vertical)
-        
+//        indicator?.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998), for: .horizontal)
+//        indicator?.setContentCompressionResistancePriority(UILayoutPriority(rawValue: 998), for: .vertical)
+
         updateViews(forColor: contentColor)
         setNeedsUpdateConstraints()
     }
@@ -504,14 +504,14 @@ public class HKProgressHUD: UIView {
         var centeringConstraints = [NSLayoutConstraint]()
         centeringConstraints.append(NSLayoutConstraint(item: bezelView!, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: offset.x))
         centeringConstraints.append(NSLayoutConstraint(item: bezelView!, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: offset.y))
-        apply(priority: UILayoutPriority(rawValue: 998), toConstraints: centeringConstraints)
+//        apply(priority: UILayoutPriority(rawValue: 998), toConstraints: centeringConstraints)
         addConstraints(centeringConstraints)
         
         // Ensure minimum side margin is kept
         var sideConstraints = [NSLayoutConstraint]()
         sideConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "|-(>=margin)-[bezel]-(>=margin)-|", options: .alignAllTop, metrics: metrics, views: ["bezel": bezelView!]))
         sideConstraints.append(contentsOf: NSLayoutConstraint.constraints(withVisualFormat: "V:|-(>=margin)-[bezel]-(>=margin)-|", options: .alignAllTop, metrics: metrics, views: ["bezel": bezelView!]))
-        self.apply(priority: UILayoutPriority(rawValue: 999), toConstraints: sideConstraints)
+//        self.apply(priority: UILayoutPriority(rawValue: 999), toConstraints: sideConstraints)
         self.addConstraints(sideConstraints)
         
         // Minimum bezel size, if set
@@ -520,14 +520,14 @@ public class HKProgressHUD: UIView {
             var miniSizeConstraints = [NSLayoutConstraint]()
             miniSizeConstraints.append(NSLayoutConstraint(item: bezelView!, attribute: .width, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: minimumSize.width))
             miniSizeConstraints.append(NSLayoutConstraint(item: bezelView!, attribute: .height, relatedBy: .greaterThanOrEqual, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: minimumSize.height))
-            self.apply(priority: UILayoutPriority(rawValue: 997), toConstraints: miniSizeConstraints)
+//            self.apply(priority: UILayoutPriority(rawValue: 997), toConstraints: miniSizeConstraints)
             bezelConstraints?.append(contentsOf: miniSizeConstraints)
         }
         
         // Square aspect ratio, if set
         if(isSquare) {
             let square = NSLayoutConstraint(item: bezelView!, attribute: .height, relatedBy: .equal, toItem: bezelView!, attribute: .width, multiplier: 1, constant: 0)
-            square.priority = UILayoutPriority(rawValue: 997)
+//            square.priority = UILayoutPriority(rawValue: 997)
             bezelConstraints?.append(square)
         }
         
